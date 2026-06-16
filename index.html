@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Films — One app. Every camera.</title>
+<meta name="description" content="Films is a shared disposable camera. Everyone shoots the same night through 24 vintage looks — and nobody sees a single frame until the film develops. Coming soon to the App Store." />
+<meta name="theme-color" content="#0A0807" />
+<meta property="og:title" content="Films — One app. Every camera." />
+<meta property="og:description" content="A shared disposable camera. Shoot the night through every look. Nobody sees a frame until it develops. Coming soon to iOS." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://biswaskhatiwada.github.io/films-legal/shots/panel-1.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0A0807; --bg2:#0E0B09; --surface:#1C1813; --surface2:#241E17;
+    --brass:#E6B450; --brass-deep:#1A1206; --brass-soft:rgba(230,180,80,.14);
+    --cream:#F4ECDD; --muted:#A89C88; --hair:rgba(245,232,210,.10);
+    --display:"Instrument Serif",Georgia,"Times New Roman",serif;
+    --body:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --mono:"Space Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--body);color:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background:radial-gradient(118% 78% at 50% -8%, #18130D 0%, #0A0807 46%, #060504 100%) fixed;}
+  /* film grain echoing the app */
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    background-size:340px 340px;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spacing:-.5px;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px;position:relative;z-index:2;}
+  .accent{color:var(--brass);}
+  .serif-it{font-family:var(--display);font-style:italic;}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:700;font-size:15px;border:0;cursor:pointer;border-radius:999px;padding:13px 24px;color:var(--brass-deep);background:var(--brass);box-shadow:0 12px 30px rgba(230,180,80,.22);transition:transform .15s ease, box-shadow .15s ease;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(230,180,80,.32);}
+  .btn.ghost{background:transparent;border:1px solid var(--hair);box-shadow:none;color:var(--cream);}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--brass);background:var(--brass-soft);border:1px solid rgba(230,180,80,.25);border-radius:999px;padding:6px 14px;}
+  .spark{width:1em;height:1em;display:inline-block;vertical-align:-.12em;}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,8,7,.72);border-bottom:1px solid var(--hair);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:.3px;display:flex;align-items:center;gap:10px;}
+  .logo .spark{width:20px;height:20px;}
+  .navlinks{display:flex;gap:26px;align-items:center;}
+  .navlinks a{color:var(--muted);font-size:14px;font-weight:600;transition:color .15s;}
+  .navlinks a:hover{color:var(--cream);}
+  @media(max-width:760px){.navlinks a:not(.btn){display:none;}}
+
+  /* Hero */
+  .hero{position:relative;padding:74px 0 30px;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;}
+  .hero h1{font-size:clamp(46px,7vw,78px);}
+  .hero p.lead{margin-top:20px;font-size:19px;color:var(--muted);max-width:520px;}
+  .cta-row{margin-top:30px;display:flex;flex-direction:column;gap:12px;max-width:460px;}
+  .wl-form{display:flex;gap:8px;}
+  .wl-form input{flex:1;min-width:0;background:var(--surface);border:1px solid var(--hair);border-radius:999px;padding:13px 18px;color:var(--cream);font-size:15px;font-family:var(--body);}
+  .wl-form input::placeholder{color:var(--muted);}
+  .wl-note{font-size:13px;color:var(--muted);}
+  .wl-msg{font-size:14px;font-weight:600;min-height:20px;}
+  .store-pill{display:inline-flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--hair);border-radius:14px;padding:10px 16px;font-size:14px;font-weight:600;color:var(--cream);width:max-content;}
+  .store-pill small{color:var(--muted);font-weight:500;display:block;font-size:11px;}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;text-align:center;}.cta-row{margin-inline:auto;}.hero p.lead{margin-inline:auto;}.hero-phone{order:-1;}.store-pill{margin-inline:auto;}}
+
+  /* Phone mockup */
+  .hero-phone{display:flex;justify-content:center;}
+  .phone{width:300px;max-width:80vw;aspect-ratio:756/1658;border-radius:46px;padding:9px;position:relative;
+    background:linear-gradient(150deg,#3a342c,#171411 62%);box-shadow:0 50px 110px -20px rgba(0,0,0,.7), inset 0 1px 0 rgba(245,232,210,.14);}
+  .screen{width:100%;height:100%;border-radius:38px;overflow:hidden;position:relative;background:#0A0807;}
+  .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* Sections */
+  section{padding:62px 0;position:relative;z-index:2;}
+  .sec-head{text-align:center;max-width:700px;margin:0 auto 14px;}
+  .sec-head h2{font-size:clamp(30px,4.4vw,46px);}
+  .sec-head p{margin-top:12px;color:var(--muted);font-size:17px;}
+  .trust{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:center;color:var(--muted);font-size:13px;font-weight:600;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:18px 0;}
+  .trust b{color:var(--cream);}
+  .trust .spark{width:13px;height:13px;}
+
+  /* Ad rail — the App Store panels themselves */
+  .adrail-outer{position:relative;z-index:2;}
+  .adrail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 22px 24px;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .adrail::-webkit-scrollbar{display:none;}
+  .adrail::before,.adrail::after{content:"";flex:0 0 max(0px,calc((100vw - 1120px)/2));}
+  .ad{flex:0 0 auto;width:clamp(212px,60vw,272px);scroll-snap-align:center;border-radius:26px;overflow:hidden;
+    border:1px solid var(--hair);box-shadow:0 28px 64px -16px rgba(0,0,0,.6);background:#0A0807;}
+  .ad img{display:block;width:100%;height:auto;}
+  .rail-hint{text-align:center;color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:2px;margin-top:6px;}
+
+  /* Features (alternating) */
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;padding:42px 0;}
+  .feat:nth-child(even) .feat-copy{order:2;}
+  .feat-copy .pill{margin-bottom:16px;}
+  .feat-copy h3{font-size:clamp(28px,3.6vw,40px);}
+  .feat-copy p{margin-top:14px;color:var(--muted);font-size:17px;}
+  .feat-copy ul{margin-top:18px;list-style:none;display:grid;gap:10px;}
+  .feat-copy li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;}
+  .feat-copy li::before{content:"✦";color:var(--brass);font-size:13px;margin-top:3px;}
+  .feat-art{display:flex;justify-content:center;}
+  @media(max-width:860px){.feat{grid-template-columns:1fr;gap:30px;}.feat:nth-child(even) .feat-copy{order:0;}.feat-art{order:-1;}}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px;}
+  .step{background:var(--surface);border:1px solid var(--hair);border-radius:22px;padding:24px;text-align:center;}
+  .step .n{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--display);font-size:22px;color:var(--brass-deep);background:var(--brass);}
+  .step h4{font-family:var(--display);font-size:22px;margin-bottom:6px;font-weight:400;}
+  .step p{color:var(--muted);font-size:14px;}
+  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr;}}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:24px auto 0;}
+  .qa{border-bottom:1px solid var(--hair);}
+  .qa button{width:100%;text-align:left;background:none;border:0;color:var(--cream);font-family:var(--body);font-size:17px;font-weight:600;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;}
+  .qa .ans{max-height:0;overflow:hidden;transition:max-height .28s ease;color:var(--muted);font-size:15px;}
+  .qa.open .ans{max-height:320px;padding-bottom:18px;}
+  .qa .chev{transition:transform .25s;color:var(--brass);font-size:22px;line-height:1;}
+  .qa.open .chev{transform:rotate(45deg);}
+
+  /* CTA band + footer */
+  .band{margin:20px 0;background:linear-gradient(135deg,rgba(230,180,80,.14),rgba(230,180,80,.04));border:1px solid var(--hair);border-radius:30px;padding:50px 28px;text-align:center;}
+  .band h2{font-size:clamp(28px,4.4vw,44px);}
+  .band p{color:var(--muted);margin-top:10px;}
+  .band .wl-form{max-width:460px;margin:18px auto 0;}
+  .badges{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;color:var(--muted);font-size:12px;font-weight:600;}
+  footer{border-top:1px solid var(--hair);padding:40px 0;color:var(--muted);font-size:14px;position:relative;z-index:2;}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center;}
+  footer a{color:var(--muted);}footer a:hover{color:var(--cream);}
+  footer .links{display:flex;gap:20px;flex-wrap:wrap;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><svg class="spark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 2 C53 30 70 47 98 50 C70 53 53 70 50 98 C47 70 30 53 2 50 C30 47 47 30 50 2 Z" fill="#E6B450"/></svg>Films</a>
+    <div class="navlinks">
+      <a href="#looks">Looks</a>
+      <a href="#reveal">Reveal</a>
+      <a href="#recap">Recap</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#waitlist">Join the waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill">Coming soon · iOS</span>
+      <h1 style="margin-top:18px">Your day,<br><span class="accent">everyone's camera.</span></h1>
+      <p class="lead">Films is a shared disposable camera. Start a film, invite your people, and everyone shoots the same night through 24 vintage looks — then <span class="serif-it" style="color:var(--cream)">nobody sees a single frame</span> until the roll develops.</p>
+      <div class="cta-row" id="waitlist">
+        <form class="wl-form" data-wl>
+          <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required />
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
+          <button class="btn" type="submit">Notify me</button>
+        </form>
+        <div class="wl-msg" data-wl-msg></div>
+        <div class="store-pill">🍎 <div><small>Coming soon to the</small><b>App Store</b></div></div>
+        <div class="wl-note">One launch-day ping. No spam, ever.</div>
+      </div>
+    </div>
+    <div class="hero-phone">
+      <div class="phone"><div class="screen">
+        <img class="shot" src="shots/screen-home.png" alt="Films home — your active films and developed albums" />
+      </div></div>
+    </div>
+  </div>
+</header>
+
+<div class="trust wrap" style="max-width:1120px">
+  <span><b>24</b> film looks</span>
+  <span><b>iOS</b> · 13+</span>
+  <span><b>Private</b> by design</span>
+  <span>Nobody sees a frame <b>early</b></span>
+</div>
+
+<!-- THE ADS — App Store panels -->
+<section id="looks" style="padding-bottom:34px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="pill">One app · every film</span>
+      <h2 style="margin-top:14px">Every camera. Every look.</h2>
+      <p>Disposable, Super 8, VHS, 8mm, instant, glow — 24 hand-tuned film cameras, all live in the viewfinder before you ever press the shutter.</p>
+    </div>
+  </div>
+  <div class="adrail-outer reveal">
+    <div class="adrail">
+      <div class="ad"><img loading="lazy" src="shots/panel-1.png" alt="Start your first film today" /></div>
+      <div class="ad"><img loading="lazy" src="shots/panel-2.png" alt="Every camera. Every look." /></div>
+      <div class="ad"><img loading="lazy" src="shots/panel-3.png" alt="The same moment, every camera." /></div>
+      <div class="ad"><img loading="lazy" src="shots/panel-4.png" alt="Name your film. Start capturing." /></div>
+      <div class="ad"><img loading="lazy" src="shots/panel-5.png" alt="Nobody sees a frame until it develops." /></div>
+      <div class="ad"><img loading="lazy" src="shots/panel-6.png" alt="Your day, everyone's camera." /></div>
+      <div class="ad"><img loading="lazy" src="shots/panel-7.png" alt="Share the link. Everyone's in." /></div>
+      <div class="ad"><img loading="lazy" src="shots/panel-8.png" alt="Then relive it as a reel." /></div>
+    </div>
+    <div class="rail-hint">← SWIPE THROUGH THE ROLL →</div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="wrap">
+
+    <!-- 1: looks -->
+    <div class="feat reveal">
+      <div class="feat-copy">
+        <span class="pill">24 cameras</span>
+        <h3>A whole shelf of cameras, in one app.</h3>
+        <p>Pick a look and the viewfinder becomes that camera — grain, halation, frame and all. What you see is what develops.</p>
+        <ul>
+          <li>Disposable, Super 8, VHS, 8mm, instant, DCR and more</li>
+          <li>Real-time grade — no editing afterward</li>
+          <li>Build your own film stock in the Film Lab</li>
+        </ul>
+      </div>
+      <div class="feat-art"><div class="phone"><div class="screen">
+        <img class="shot" loading="lazy" src="shots/screen-camera.png" alt="The Films viewfinder with a strip of film looks" />
+      </div></div></div>
+    </div>
+
+    <!-- 2: reveal -->
+    <div class="feat reveal" id="reveal">
+      <div class="feat-copy">
+        <span class="pill">The big reveal</span>
+        <h3>Nobody sees a frame until it develops.</h3>
+        <p>Every film stays locked while you shoot. No previews, no deleting the unflattering ones — just the honest roll, revealed all at once when the timer hits zero.</p>
+        <ul>
+          <li>Set the reveal for tonight, tomorrow, or a few hours out</li>
+          <li>The whole group unwraps the film together</li>
+          <li>Reveal early when you can't wait</li>
+        </ul>
+      </div>
+      <div class="feat-art"><div class="phone"><div class="screen">
+        <img class="shot" loading="lazy" src="shots/screen-reveal.png" alt="A film developing, frames still hidden" />
+      </div></div></div>
+    </div>
+
+    <!-- 3: together -->
+    <div class="feat reveal">
+      <div class="feat-copy">
+        <span class="pill">Capture together</span>
+        <h3>The same moment, every camera.</h3>
+        <p>Invite everyone at the party with one link. Every guest shoots into the same film, so your album holds the night from every angle — not just yours.</p>
+        <ul>
+          <li>One shared film, everyone contributes</li>
+          <li>Each frame tagged with who shot it</li>
+          <li>Private to the people you invite</li>
+        </ul>
+      </div>
+      <div class="feat-art"><div class="phone"><div class="screen">
+        <img class="shot" loading="lazy" src="shots/screen-together.png" alt="Friends' shots dropping into a shared film" />
+      </div></div></div>
+    </div>
+
+    <!-- 4: recap -->
+    <div class="feat reveal" id="recap">
+      <div class="feat-copy">
+        <span class="pill">Make a recap</span>
+        <h3>Then relive it as a reel.</h3>
+        <p>Turn a developed film into a shareable recap video — Ken-Burns motion, a film grade, music, and stickers — in a couple of taps.</p>
+        <ul>
+          <li>Five styles: Classic, Super 8, Fast Cut, Slow, Polaroid</li>
+          <li>Built-in royalty-free soundtracks</li>
+          <li>Export a 1080×1920 reel for anywhere</li>
+        </ul>
+      </div>
+      <div class="feat-art"><div class="phone"><div class="screen">
+        <img class="shot" loading="lazy" src="shots/screen-recap.png" alt="The recap reel composer" />
+      </div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background:linear-gradient(180deg,transparent,rgba(230,180,80,.05),transparent)">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="pill">Dead simple</span><h2 style="margin-top:14px">From download to developed in a night.</h2></div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h4>Create a film</h4><p>Name it, pick a look, and set when it develops.</p></div>
+      <div class="step reveal"><div class="n">2</div><h4>Invite your people</h4><p>Share one link. Everyone joins the same film.</p></div>
+      <div class="step reveal"><div class="n">3</div><h4>Shoot the night</h4><p>Each frame drops into the roll — unseen, by everyone.</p></div>
+      <div class="step reveal"><div class="n">4</div><h4>Develop &amp; reveal</h4><p>The timer hits zero and the whole album appears at once.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="pill">Questions</span><h2 style="margin-top:14px">Good to know.</h2></div>
+    <div class="faq">
+      <div class="qa"><button>What exactly is Films? <span class="chev">+</span></button><div class="ans">A camera app built around real-film feelings. You shoot through one of 24 vintage looks, and you can start a shared "film" that friends join — everyone captures the same event, and nobody sees the photos until the roll develops.</div></div>
+      <div class="qa"><button>Can I see the photos before they develop? <span class="chev">+</span></button><div class="ans">No — that's the whole point. Frames stay hidden while you shoot. When the reveal timer ends, the entire film appears at once for everyone in it. You can choose to reveal early if you'd rather not wait.</div></div>
+      <div class="qa"><button>How many people can join a film? <span class="chev">+</span></button><div class="ans">A film is meant for a group — your table, your trip, your whole party. Invite them with a single link or code, and every guest shoots into the same shared album.</div></div>
+      <div class="qa"><button>What's free, and what's Pro? <span class="chev">+</span></button><div class="ans">The core camera and films are free. Films Pro unlocks the full set of premium camera packs, recap styles, and more — offered Weekly, Monthly, or Annual, with a free trial on the Weekly plan. Prices are always shown in-app before you subscribe.</div></div>
+      <div class="qa"><button>Is my data private? <span class="chev">+</span></button><div class="ans">Yes. Your photos and films are private to you and the people you invite. We don't run ads, sell data, or use third-party trackers, and you can delete any photo — or your whole account — at any time. See our <a href="privacy.html">Privacy Policy</a>.</div></div>
+      <div class="qa"><button>When does it launch? <span class="chev">+</span></button><div class="ans">Soon, on the iOS App Store. Leave your email above and we'll ping you the day it goes live.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<div class="wrap">
+  <div class="band reveal">
+    <span class="pill">Be first</span>
+    <h2 style="margin-top:14px">Be the first to shoot a roll.</h2>
+    <p>Leave your email — we'll send one message, the day Films lands on the App Store.</p>
+    <form class="wl-form" data-wl>
+      <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required />
+      <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
+      <button class="btn" type="submit">Notify me</button>
+    </form>
+    <div class="wl-msg" data-wl-msg></div>
+    <div class="badges"><span>📬 One launch-day ping</span><span>🍎 iOS first</span><span>🔒 No spam, ever</span></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><svg class="spark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 2 C53 30 70 47 98 50 C70 53 53 70 50 98 C47 70 30 53 2 50 C30 47 47 30 50 2 Z" fill="#E6B450"/></svg>Films</div>
+    <div class="links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+    </div>
+    <div>© 2026 Films</div>
+  </div>
+</footer>
+
+<script>
+  // Waitlist — wire WAITLIST_URL to a real endpoint (Formspree / Convex) before launch.
+  // Until then, we confirm client-side and store nothing.
+  const WAITLIST_URL = "";
+  document.querySelectorAll("form[data-wl]").forEach((form) => {
+    const msg = form.parentElement.querySelector("[data-wl-msg]");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      if (data.website) return; // honeypot
+      const btn = form.querySelector("button");
+      if (!WAITLIST_URL) {
+        form.reset();
+        if (msg) { msg.style.color = "#E6B450"; msg.textContent = "You're on the list ✦ See you on launch day."; }
+        return;
+      }
+      btn.disabled = true; if (msg) { msg.style.color = "#A89C88"; msg.textContent = "Adding you…"; }
+      try {
+        const res = await fetch(WAITLIST_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: data.email, source: "landing" }) });
+        const j = await res.json();
+        if (j.ok) { form.reset(); if (msg) { msg.style.color = "#7BC47F"; msg.textContent = "You're on the list ✦ See you on launch day."; } }
+        else if (msg) { msg.style.color = "#E6B450"; msg.textContent = j.error || "Hmm, try that again."; }
+      } catch { if (msg) { msg.style.color = "#E6B450"; msg.textContent = "Network hiccup — try again."; } }
+      btn.disabled = false;
+    });
+  });
+  // FAQ accordion
+  document.querySelectorAll(".qa button").forEach((b) =>
+    b.addEventListener("click", () => b.parentElement.classList.toggle("open")));
+  // Reveal on scroll
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
