@@ -12,9 +12,36 @@ Terms of Use, and Support pages. Hosted free on GitHub Pages.
 | `terms.html` | Terms of Use / EULA (subscriptions, content, acceptable use, DMCA/IP) |
 | `support.html` | Support / FAQ + account deletion + contact |
 | `shots/` | App Store ad panels (`panel-1..8.png`) + clean app-screen crops (`screen-*.png`) |
+| `blog/` | **The Journal** — generated static blog: `index.html`, 25 article pages, `art/*.svg` covers, `journal.css`, `journal.js`. Served as-is. |
+| `journal-src/` | Authoring tooling for the blog (**not** served). `build.py` renders everything under `blog/`. |
 
 The app's paywall links to `terms.html` and `privacy.html` here (see
 `Camera/UI/PaywallView.swift`).
+
+## The Journal (blog)
+
+`/blog/` is **The Journal** — a 25-post editorial blog in the site's dark-brass film
+aesthetic, each post with a custom generative SVG cover. The HTML under `blog/` is plain
+static output (no build step runs on GitHub Pages); it's generated locally from the tooling
+in `journal-src/`:
+
+- `journal-src/posts.py` — manifest: title, slug, category, date, read time, dek, excerpt,
+  and cover motif for each of the 25 posts (display order; entry `[0]` is the featured post).
+- `journal-src/content/<slug>.html` — the long-form body of each article (HTML fragments;
+  `{{divider}}` is replaced by a film-strip divider at build time).
+- `journal-src/covers.py` — the generative SVG cover-art system (film-strip, aperture,
+  light-leak, develop-tray, swatch, camera, halation, clock, envelope, route, printer, … motifs).
+- `journal-src/build.py` — wraps fragments in the shared article template, builds the
+  category-filterable index, and renders all 25 covers.
+
+**Regenerate after any edit:**
+```sh
+python3 journal-src/build.py   # writes blog/index.html, blog/<slug>.html, blog/art/<slug>.svg
+```
+
+To add a post: append an entry to `posts.py`, drop a body fragment in `content/`, rerun
+`build.py`. The Journal is linked from the main nav, a "From the Journal" teaser on
+`index.html`, and the footer of every page.
 
 ## ⚠️ Before you launch — required edits
 
@@ -48,7 +75,7 @@ host is `biswaskhatiwada.github.io/films-legal`; after the swap it becomes `http
 | # | Location | What to change |
 |---|---|---|
 | 1 | **This repo → GitHub Pages** | Add the domain (step A below). Internal page links are all *relative*, so they keep working untouched. |
-| 2 | `index.html` → `<meta property="og:image">` | The only **absolute** URL on the site — repoint to `https://yourdomain/shots/panel-1.png`. |
+| 2 | `index.html` → `<meta property="og:image">` **and** `journal-src/build.py` → `BASE` | The site's **absolute** URLs. Repoint index's `og:image` to `https://yourdomain/shots/panel-1.png`; set `BASE` in `build.py` to the new host and rerun `python3 journal-src/build.py` (the blog's `og:image`/`og:url` tags use it). |
 | 3 | **App** `Camera/UI/PaywallView.swift` | The two legal links (`termsURL`, `privacyURL`). *Recommended:* centralize them into one `legalBase` constant (like SPARK's `SparkLegal.legalBase`) so this becomes a one-line change. |
 | 4 | **App** in-film invite (when wired) | The web invite link `…/join.html?code=` — also use the same `legalBase`. The `films://join/CODE` deep-link scheme is **not** domain-based, so it's unaffected. |
 | 5 | **App Store Connect** (manual fields) | Privacy Policy URL · Support URL · Marketing URL. Changing these is *metadata only* — **no new build review needed.** |

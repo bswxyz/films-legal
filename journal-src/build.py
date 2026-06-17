@@ -44,6 +44,8 @@ def nav(prefix=""):
     <div class="navlinks">
       <a href="{prefix}../index.html#looks">Looks</a>
       <a href="{prefix}../index.html#reveal">Reveal</a>
+      <a href="{prefix}../index.html#recap">Recap</a>
+      <a href="{prefix}../index.html#faq">FAQ</a>
       <a href="{prefix}index.html" class="active">Journal</a>
       <a class="btn" href="{prefix}../index.html#waitlist">Join the waitlist</a>
     </div></div></nav>'''
