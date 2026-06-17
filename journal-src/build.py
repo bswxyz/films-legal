@@ -21,7 +21,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BLOG = os.path.join(ROOT, "blog")
 ART = os.path.join(BLOG, "art")
 CONTENT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "content")
-BASE = "https://biswaskhatiwada.github.io/films-legal"
+BASE = "https://getfilmsera.cam"
 
 SPARK = ('<svg class="spark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">'
          '<path d="M50 2 C53 30 70 47 98 50 C70 53 53 70 50 98 C47 70 30 53 2 50 '
