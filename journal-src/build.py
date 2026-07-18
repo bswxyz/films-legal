@@ -27,10 +27,12 @@ SPARK = ('<svg class="spark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000
          '<path d="M50 2 C53 30 70 47 98 50 C70 53 53 70 50 98 C47 70 30 53 2 50 '
          'C30 47 47 30 50 2 Z" fill="#E6B450"/></svg>')
 
+APP_STORE = "https://apps.apple.com/us/app/filmsera-group-film-camera/id6781880091"
+SMART_BANNER = '<meta name="apple-itunes-app" content="app-id=6781880091"/>'
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"/>'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>'
-         '<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1'
-         '&family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700'
+         '<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600'
+         '&family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700'
          '&display=swap" rel="stylesheet"/>')
 
 
@@ -40,36 +42,37 @@ def pretty(iso):
 
 def nav(prefix=""):
     return f'''<nav><div class="wrap">
-    <a class="logo" href="{prefix}../index.html">{SPARK}Films</a>
+    <a class="logo" href="{prefix}../index.html">{SPARK}Filmsera</a>
     <div class="navlinks">
       <a href="{prefix}../index.html#looks">Looks</a>
       <a href="{prefix}../index.html#reveal">Reveal</a>
       <a href="{prefix}../index.html#recap">Recap</a>
       <a href="{prefix}../index.html#faq">FAQ</a>
       <a href="{prefix}index.html" class="active">Journal</a>
-      <a class="btn" href="{prefix}../index.html#waitlist">Join the waitlist</a>
+      <a class="btn" href="{APP_STORE}" target="_blank" rel="noopener" data-cta="app_store">Download</a>
     </div></div></nav>'''
 
 
 def footer(prefix=""):
     return f'''<footer><div class="wrap">
-    <div class="logo">{SPARK}Films</div>
+    <div class="logo">{SPARK}Filmsera</div>
     <div class="links">
       <a href="index.html">Journal</a>
+      <a href="{prefix}../looks/index.html">Look Lab</a>
       <a href="{prefix}../privacy.html">Privacy</a>
       <a href="{prefix}../terms.html">Terms</a>
       <a href="{prefix}../support.html">Support</a>
     </div>
-    <div>© 2026 Films</div>
+    <div>© 2026 Filmsera</div>
   </div></footer>'''
 
 
 def cta_band():
-    return '''<section><div class="wrap"><div class="band reveal">
-      <span class="pill">Be first</span>
-      <h2>Be the first to shoot a roll.</h2>
-      <p>Films is coming to the App Store. Leave your email and we'll send one message the day it lands.</p>
-      <a class="btn" href="../index.html#waitlist">Join the waitlist</a>
+    return f'''<section><div class="wrap"><div class="band reveal">
+      <span class="pill">On the App Store</span>
+      <h2>Download Filmsera</h2>
+      <p>24 Looks. Shared Films. Timed Reveal. Host the night — then open every Frame together.</p>
+      <a class="btn" href="{APP_STORE}" target="_blank" rel="noopener" data-cta="app_store">Download on the App Store</a>
     </div></div></section>'''
 
 
@@ -98,13 +101,15 @@ def head(title, desc, slug):
     return f'''<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<title>{title} — The Journal · Films</title>
+<title>{title} — The Journal · Filmsera</title>
 <meta name="description" content="{desc}"/>
 <meta name="theme-color" content="#0A0807"/>
+{SMART_BANNER}
 <meta property="og:title" content="{title}"/>
 <meta property="og:description" content="{desc}"/>
 <meta property="og:type" content="article"/>
-<meta property="og:image" content="{BASE}/blog/art/{slug}.svg"/>
+<meta property="og:site_name" content="Filmsera"/>
+<meta property="og:image" content="{BASE}/shots/panel-1.png"/>
 <meta property="og:url" content="{BASE}/blog/{slug}.html"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="canonical" href="{BASE}/blog/{slug}.html"/>
@@ -136,12 +141,13 @@ def build_article(p):
 
     html = head(p["title"], p["excerpt"], p["slug"])
     html += nav()
-    html += f'''<article>
+    html += f'''<div class="wrap" style="padding-top:18px"><a class="btn" href="{APP_STORE}" target="_blank" rel="noopener" data-cta="app_store" style="display:inline-flex">Download Filmsera</a></div>
+<article>
   <div class="wrap"><header class="article-hero">
     <span class="pill">{p['cat']}</span>
     <h1>{p['title']}</h1>
     <p class="dek">{p['dek']}</p>
-    <div class="byline"><span>Films</span><span class="dot">·</span>
+    <div class="byline"><span>Filmsera</span><span class="dot">·</span>
       <time datetime="{p['date']}">{pretty(p['date'])}</time>
       <span class="dot">·</span><span>{p['read']} min read</span></div>
   </header></div>
@@ -151,8 +157,8 @@ def build_article(p):
   <div class="wrap"><div class="prose">{body}</div></div>
   <div class="wrap"><div class="end-note">
     <div class="mark">{SPARK}</div>
-    <div><h4>Written by the Films team</h4>
-    <p>Films is a shared disposable camera — everyone shoots the same moment through vintage looks, and nobody sees a frame until it develops. <a href="../index.html#waitlist" style="color:var(--brass)">Join the waitlist →</a></p></div>
+    <div><h4>Written by the Filmsera team</h4>
+    <p>Filmsera is a group film camera — Host a Film, shoot Shots through 24 Looks, and open every Frame together at Reveal. <a href="{APP_STORE}" target="_blank" rel="noopener" data-cta="app_store" style="color:var(--brass)">Download on the App Store →</a></p></div>
   </div></div>
 </article>'''
     html += related_for(p)
@@ -175,13 +181,15 @@ def build_index():
     html = f'''<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<title>The Journal — Films</title>
-<meta name="description" content="Notes on film, memory, and shooting together — from the team behind Films, the shared disposable camera."/>
+<title>The Journal — Filmsera</title>
+<meta name="description" content="Notes on film, memory, and shooting together — from the team behind Filmsera, the group film camera."/>
 <meta name="theme-color" content="#0A0807"/>
-<meta property="og:title" content="The Journal — Films"/>
+{SMART_BANNER}
+<meta property="og:title" content="The Journal — Filmsera"/>
 <meta property="og:description" content="Notes on film, memory, and shooting together."/>
 <meta property="og:type" content="website"/>
-<meta property="og:image" content="{BASE}/blog/art/{feat['slug']}.svg"/>
+<meta property="og:site_name" content="Filmsera"/>
+<meta property="og:image" content="{BASE}/shots/panel-1.png"/>
 <meta property="og:url" content="{BASE}/blog/"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="canonical" href="{BASE}/blog/"/>
@@ -196,7 +204,8 @@ def build_index():
     html += '''<header class="j-head"><div class="wrap">
     <span class="pill">The Journal</span>
     <h1>Notes on film, memory, and shooting together.</h1>
-    <p>Stories on the looks, the wait, and the craft of capturing a night the way it actually felt — from the team behind Films.</p>
+    <p>Stories on the Looks, the wait, and the craft of capturing a night the way it actually felt — from the team behind Filmsera.</p>
+    <p style="margin-top:16px"><a class="btn" href="''' + APP_STORE + '''" target="_blank" rel="noopener" data-cta="app_store">Download Filmsera</a></p>
   </div></header>'''
     html += f'''<div class="wrap"><article class="featured reveal">
     <div class="art"><a href="{feat['slug']}.html"><img loading="lazy" src="art/{feat['slug']}.svg" alt="{feat['title']} — cover illustration"/></a></div>

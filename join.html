@@ -3,29 +3,30 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Join a film · Films</title>
+<title>Join a Film · Filmsera</title>
 <link rel="canonical" href="https://getfilmsera.cam/join.html" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta name="apple-itunes-app" content="app-id=6781880091" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Films" />
-<meta name="twitter:description" content="" />
+<meta name="twitter:title" content="Join a Film · Filmsera" />
+<meta name="twitter:description" content="You've been invited to a Film on Filmsera — open the app and enter the code to start shooting." />
 <meta name="twitter:image" content="https://getfilmsera.cam/shots/panel-1.png" />
-<meta name="description" content="You've been invited to a film on Films — open the app and enter the code to start shooting." />
+<meta name="description" content="You've been invited to a Film on Filmsera — open the app and enter the code to start shooting." />
 <meta name="theme-color" content="#0A0807" />
 <meta name="robots" content="noindex" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   :root{
     --bg:#0A0807; --surface:#1C1813; --brass:#E6B450; --brass-deep:#1A1206;
     --cream:#F4ECDD; --muted:#A89C88; --hair:rgba(245,232,210,.10);
-    --display:"Instrument Serif",Georgia,serif;
+    --display:"Fraunces",Georgia,serif;
     --body:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    --mono:"Space Mono",ui-monospace,Menlo,monospace;
+    --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:var(--body);color:var(--cream);min-height:100svh;display:flex;flex-direction:column;
@@ -54,21 +55,21 @@
 </style>
 </head>
 <body>
-  <div class="brandrow"><svg class="spark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 2 C53 30 70 47 98 50 C70 53 53 70 50 98 C47 70 30 53 2 50 C30 47 47 30 50 2 Z" fill="#E6B450"/></svg>Films</div>
+  <div class="brandrow"><svg class="spark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 2 C53 30 70 47 98 50 C70 53 53 70 50 98 C47 70 30 53 2 50 C30 47 47 30 50 2 Z" fill="#E6B450"/></svg>Filmsera</div>
 
   <span class="eyebrow">You're invited</span>
-  <h1>Join the film.</h1>
-  <p class="lead">Someone added you to a film on <strong style="color:var(--cream)">Films</strong> — the shared disposable camera. Open the app to shoot into it.</p>
+  <h1>Join the Film.</h1>
+  <p class="lead">Someone added you to a Film on <strong style="color:var(--cream)">Filmsera</strong> — the shared disposable camera. Open the app to shoot into it.</p>
 
   <div class="codecard">
     <div class="codelabel">SHARE CODE</div>
     <div class="code" id="code">— — —</div>
-    <div class="hint" id="hint">Open <strong>✱ Films › Join</strong> and enter this code to start shooting.</div>
-    <a class="btn" id="openBtn" href="#">Open in Films</a><br>
+    <div class="hint" id="hint">Open <strong>✱ Filmsera › Join</strong> and enter this code to start shooting.</div>
+    <a class="btn" id="openBtn" href="#">Open in Filmsera</a><br>
     <button class="copy" id="copyBtn" type="button">Copy code</button>
   </div>
 
-  <div class="foot">Don't have Films yet? <a href="index.html">Get it here →</a></div>
+  <div class="foot">Don't have Filmsera yet? <a href="https://apps.apple.com/us/app/filmsera-group-film-camera/id6781880091" target="_blank" rel="noopener">Download on the App Store →</a></div>
 
 <script>
   // Pull the code from ?code=XXXX  (also tolerates  #XXXX  or  /join/XXXX)
@@ -81,14 +82,15 @@
   const code = readCode();
   const openBtn = document.getElementById("openBtn");
   const copyBtn = document.getElementById("copyBtn");
+  const APP_STORE = "https://apps.apple.com/us/app/filmsera-group-film-camera/id6781880091";
 
   if (code) {
     document.getElementById("code").textContent = code;
     // Deep link into the app (scheme registered app-side). Falls back to the
-    // landing page after a moment if the app isn't installed.
+    // App Store after a moment if the app isn't installed.
     openBtn.setAttribute("href", "films://join/" + code);
     openBtn.addEventListener("click", () => {
-      const t = setTimeout(() => { location.href = "index.html"; }, 1500);
+      const t = setTimeout(() => { location.href = APP_STORE; }, 1500);
       window.addEventListener("pagehide", () => clearTimeout(t), { once: true });
     });
     copyBtn.addEventListener("click", async () => {
@@ -98,7 +100,7 @@
   } else {
     // No code in the link — still useful: send them into the app's Join screen.
     document.getElementById("code").textContent = "✱";
-    document.getElementById("hint").innerHTML = "Open <strong>✱ Films › Join</strong> and enter the code your host shared.";
+    document.getElementById("hint").innerHTML = "Open <strong>✱ Filmsera › Join</strong> and enter the code your host shared.";
     openBtn.setAttribute("href", "films://join");
     copyBtn.style.display = "none";
   }

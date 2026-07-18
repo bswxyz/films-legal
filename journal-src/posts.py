@@ -19,6 +19,27 @@ CATS = {
 # order matters: [0] is featured; remainder render newest -> oldest
 POSTS = [
     dict(
+        slug="best-disposable-camera-apps-for-weddings-2026",
+        title="Best Disposable Camera Apps for Weddings in 2026",
+        cat="Hosting", date="2026-07-18", read=11, motif="rings",
+        dek="An honest comparison for couples who want every guest's angle.",
+        excerpt="Filmsera, Once, POV, Scene, Dazz — what actually matters for a wedding Film: Looks, Reveal, guest join, and Recap.",
+    ),
+    dict(
+        slug="disposable-vs-vhs-vs-super8-which-look",
+        title="Disposable vs VHS vs 8mm: Which Look for Which Night",
+        cat="Field Guide", date="2026-07-17", read=8, motif="swatches",
+        dek="A practical picker for Filmsera's camera shelf.",
+        excerpt="Party flash, dance-floor grit, or soft home-movie grain — match the Look to the night before you Host the Film.",
+    ),
+    dict(
+        slug="how-to-run-filmsera-at-your-wedding",
+        title="How to Run a Filmsera Film at Your Wedding Reception",
+        cat="Hosting", date="2026-07-16", read=9, motif="envelope",
+        dek="Host checklist: Look, QR, memory captain, Reveal.",
+        excerpt="Create the Film, pick a Look, print the join code, and let Guests fill the roll until Reveal.",
+    ),
+    dict(
         slug="what-makes-a-photo-feel-like-film",
         title="What Actually Makes a Photo Feel Like Film",
         cat="The Craft", date="2026-06-10", read=8, motif="grainfield",
