@@ -12,6 +12,7 @@ writes blog/index.html, blog/<slug>.html, and blog/art/<slug>.svg.
 """
 
 import os
+import shutil
 from datetime import datetime
 
 import covers
@@ -22,6 +23,47 @@ BLOG = os.path.join(ROOT, "blog")
 ART = os.path.join(BLOG, "art")
 CONTENT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "content")
 BASE = "https://getfilmsera.cam"
+
+# Real app photos for Journal covers (LookSourceImages + SamplePhotos + lifestyle).
+PHOTO_POOL = [
+    "shots/samples/party.jpg",
+    "shots/samples/beach.jpg",
+    "shots/samples/hug.jpg",
+    "shots/samples/paris.jpg",
+    "shots/samples/dinner.jpg",
+    "shots/samples/sunset.jpg",
+    "shots/samples/street.jpg",
+    "shots/samples/lake.jpg",
+    "shots/samples/sample01.jpg",
+    "shots/samples/sample03.jpg",
+    "shots/samples/sample05.jpg",
+    "shots/samples/sample07.jpg",
+    "shots/samples/sample09.jpg",
+    "shots/samples/sample11.jpg",
+    "shots/looks/look03.jpg",
+    "shots/looks/look05.jpg",
+    "shots/looks/look08.jpg",
+    "shots/looks/look09.jpg",
+    "shots/looks/look14.jpg",
+    "shots/looks/look15.jpg",
+    "shots/looks/look20.jpg",
+    "shots/looks/look22.jpg",
+]
+
+
+def photo_for(slug: str) -> str:
+    h = 0
+    for ch in slug:
+        h = (h * 31 + ord(ch)) & 0xFFFFFFFF
+    return PHOTO_POOL[h % len(PHOTO_POOL)]
+
+
+def cover_src(p) -> str:
+    """Prefer copied JPG cover under blog/art/; fall back to SVG."""
+    jpg = f"art/{p['slug']}.jpg"
+    if os.path.exists(os.path.join(BLOG, jpg)):
+        return jpg
+    return f"art/{p['slug']}.svg"
 
 SPARK = ('<svg class="spark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">'
          '<path d="M50 2 C53 30 70 47 98 50 C70 53 53 70 50 98 C47 70 30 53 2 50 '
@@ -78,7 +120,7 @@ def cta_band():
 
 def card(p):
     return f'''<a class="card reveal" data-cat="{p['cat']}" href="{p['slug']}.html">
-      <div class="art"><img loading="lazy" src="art/{p['slug']}.svg" alt="{p['title']} — cover illustration"/></div>
+      <div class="art"><img loading="lazy" src="{cover_src(p)}" alt="{p['title']}"/></div>
       <div class="body">
         <div class="meta"><span class="cat">{p['cat']}</span><span>·</span><span>{p['read']} min read</span></div>
         <h3>{p['title']}</h3>
@@ -109,7 +151,7 @@ def head(title, desc, slug):
 <meta property="og:description" content="{desc}"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Filmsera"/>
-<meta property="og:image" content="{BASE}/shots/panel-1.png"/>
+<meta property="og:image" content="{BASE}/blog/art/{slug}.jpg"/>
 <meta property="og:url" content="{BASE}/blog/{slug}.html"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="canonical" href="{BASE}/blog/{slug}.html"/>
@@ -127,6 +169,11 @@ def build_cover(p):
     svg = covers.cover_svg(p["slug"], p["motif"], a, b)
     with open(os.path.join(ART, f"{p['slug']}.svg"), "w") as f:
         f.write(svg)
+    # Real photograph cover (same pool users see in-app)
+    src = os.path.join(ROOT, photo_for(p["slug"]))
+    dst = os.path.join(ART, f"{p['slug']}.jpg")
+    if os.path.exists(src):
+        shutil.copyfile(src, dst)
 
 
 def build_article(p):
@@ -152,7 +199,7 @@ def build_article(p):
       <span class="dot">·</span><span>{p['read']} min read</span></div>
   </header></div>
   <div class="wrap"><figure class="cover">
-    <img src="art/{p['slug']}.svg" alt="{p['title']} — cover illustration"/>
+    <img src="{cover_src(p)}" alt="{p['title']}"/>
   </figure></div>
   <div class="wrap"><div class="prose">{body}</div></div>
   <div class="wrap"><div class="end-note">
@@ -189,7 +236,7 @@ def build_index():
 <meta property="og:description" content="Notes on film, memory, and shooting together."/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Filmsera"/>
-<meta property="og:image" content="{BASE}/shots/panel-1.png"/>
+<meta property="og:image" content="{BASE}/blog/{cover_src(feat)}"/>
 <meta property="og:url" content="{BASE}/blog/"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="canonical" href="{BASE}/blog/"/>
@@ -205,10 +252,16 @@ def build_index():
     <span class="pill">The Journal</span>
     <h1>Notes on film, memory, and shooting together.</h1>
     <p>Stories on the Looks, the wait, and the craft of capturing a night the way it actually felt — from the team behind Filmsera.</p>
-    <p style="margin-top:16px"><a class="btn" href="''' + APP_STORE + '''" target="_blank" rel="noopener" data-cta="app_store">Download Filmsera</a></p>
+    <div class="j-mosaic" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:28px auto 0;max-width:720px">
+      <img src="../shots/samples/party.jpg" alt="" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px" loading="lazy"/>
+      <img src="../shots/samples/beach.jpg" alt="" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px" loading="lazy"/>
+      <img src="../shots/samples/hug.jpg" alt="" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px" loading="lazy"/>
+      <img src="../shots/samples/paris.jpg" alt="" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px" loading="lazy"/>
+    </div>
+    <p style="margin-top:20px"><a class="btn" href="''' + APP_STORE + '''" target="_blank" rel="noopener" data-cta="app_store">Download Filmsera</a></p>
   </div></header>'''
     html += f'''<div class="wrap"><article class="featured reveal">
-    <div class="art"><a href="{feat['slug']}.html"><img loading="lazy" src="art/{feat['slug']}.svg" alt="{feat['title']} — cover illustration"/></a></div>
+    <div class="art"><a href="{feat['slug']}.html"><img loading="lazy" src="{cover_src(feat)}" alt="{feat['title']}"/></a></div>
     <div class="copy">
       <div class="meta"><span class="pill">Featured</span><span>{feat['cat']}</span><span>·</span><span>{feat['read']} min read</span></div>
       <h2><a href="{feat['slug']}.html">{feat['title']}</a></h2>

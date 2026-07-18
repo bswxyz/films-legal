@@ -1,0 +1,14 @@
+Sample photographs (sample01–sample12.jpg)
+==========================================
+
+Source: Lorem Picsum (https://picsum.photos), which serves photographs from
+Unsplash under the Unsplash License (https://unsplash.com/license).
+
+The Unsplash License grants a free, irrevocable, worldwide right to use photos
+for commercial and non-commercial purposes, no permission or attribution
+required (attribution appreciated).
+
+These are PLACEHOLDER images used to populate the demo / seeded shared films
+("developed film" album + reveal moments) so the experience reads like real
+photographs before users shoot their own. They can be removed or replaced at any
+time and are not part of the app's brand assets.

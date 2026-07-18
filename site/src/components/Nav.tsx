@@ -14,6 +14,9 @@ export function SiteNav() {
           <Link href="/#looks" className="hidden hover:text-cream sm:inline">
             Looks
           </Link>
+          <Link href="/#recap" className="hidden hover:text-cream sm:inline">
+            Recap
+          </Link>
           <Link href="/#reveal" className="hidden hover:text-cream sm:inline">
             Reveal
           </Link>

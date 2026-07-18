@@ -28,30 +28,6 @@ export function Reveal({
   );
 }
 
-/** Parable-style feature bento */
-export function FeatureBento() {
-  const cells = [
-    { title: "Looks", body: "24 hand-tuned cameras live in the viewfinder — grain, halation, Frame and all." },
-    { title: "Shared Films", body: "Host a Film. Guests join by QR or code. Every Shot lands on one roll." },
-    { title: "Reveal", body: "Nobody peeks early. When the timer hits zero, the whole album opens together." },
-    { title: "Recap", body: "Turn a developed Film into a vertical reel with music and stickers." },
-  ];
-  return (
-    <div className="grid gap-4 sm:grid-cols-2">
-      {cells.map((c, i) => (
-        <Reveal key={c.title} delay={i * 0.06}>
-          <div className="rounded-[22px] border border-hair bg-surface p-6">
-            <div className="mb-2 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-brass">
-              {c.title}
-            </div>
-            <p className="text-[15.5px] leading-relaxed text-muted">{c.body}</p>
-          </div>
-        </Reveal>
-      ))}
-    </div>
-  );
-}
-
 /** Parable-style FAQ accordion */
 export function FaqAccordion() {
   const items = [
@@ -89,27 +65,3 @@ export function FaqAccordion() {
   );
 }
 
-/** Dazz-inspired Look Lab shelf */
-export function LookShelf({
-  looks,
-}: {
-  looks: readonly { slug: string; name: string; blurb: string }[];
-}) {
-  return (
-    <div className="flex gap-4 overflow-x-auto px-5 pb-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      {looks.map((look) => (
-        <a
-          key={look.slug}
-          href={`/looks/${look.slug}.html`}
-          className="w-[220px] shrink-0 scroll-snap-align-center rounded-[22px] border border-hair bg-surface p-5 transition hover:border-[rgba(230,180,80,0.35)]"
-        >
-          <div className="mb-3 flex h-28 items-center justify-center rounded-xl bg-[linear-gradient(145deg,#2a2218,#12100c)] font-display text-3xl text-brass">
-            {look.name.slice(0, 1)}
-          </div>
-          <div className="font-display text-2xl text-cream">{look.name}</div>
-          <p className="mt-2 text-sm text-muted">{look.blurb}</p>
-        </a>
-      ))}
-    </div>
-  );
-}

@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { AppStoreBadge, DesktopQr, SiteNav } from "../components/Nav";
+import { FaqAccordion, Reveal } from "../components/ParablePieces";
 import {
-  FaqAccordion,
+  CameraStage,
   FeatureBento,
+  FilmStrip,
+  HowItWorks,
   LookShelf,
-  Reveal,
-} from "../components/ParablePieces";
+  RecapShowcase,
+} from "../components/VisualPieces";
 import { LOOKS } from "../lib/site";
 
 export default function HomePage() {
@@ -13,8 +16,8 @@ export default function HomePage() {
     <>
       <SiteNav />
       <main className="relative z-[2]">
-        {/* Hero */}
-        <header className="mx-auto grid max-w-[1120px] items-center gap-10 px-5 py-16 md:grid-cols-2">
+        {/* Hero — TIDAL/Mobbin: phone + lifestyle photography */}
+        <header className="mx-auto grid max-w-[1120px] items-center gap-10 px-5 py-14 md:grid-cols-2 md:py-20">
           <div>
             <span className="inline-flex rounded-full border border-[rgba(230,180,80,0.25)] bg-[rgba(230,180,80,0.14)] px-3.5 py-1.5 font-mono text-[11.5px] font-bold uppercase tracking-[0.2em] text-brass">
               Available on iOS
@@ -35,16 +38,7 @@ export default function HomePage() {
               <DesktopQr />
             </div>
           </div>
-          <div className="flex justify-center">
-            <div className="w-[280px] overflow-hidden rounded-[42px] border border-hair bg-[#171411] p-2 shadow-[0_50px_110px_-20px_rgba(0,0,0,0.7)]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/shots/screen-home.png"
-                alt="Filmsera home"
-                className="aspect-[9/19] w-full rounded-[34px] object-cover"
-              />
-            </div>
-          </div>
+          <CameraStage />
         </header>
 
         {/* Trust */}
@@ -61,7 +55,13 @@ export default function HomePage() {
           <span>
             Timed <b className="text-cream">Reveal</b>
           </span>
+          <span>
+            Shareable <b className="text-cream">Recap</b>
+          </span>
         </div>
+
+        {/* Film strip — real sample photos from the app bundle */}
+        <FilmStrip />
 
         {/* Look Lab */}
         <section id="looks" className="py-16">
@@ -73,8 +73,7 @@ export default function HomePage() {
               Twenty-four cameras. One pocket.
             </h2>
             <p className="mt-3 text-[17px] text-muted">
-              Disposable, VHS, 8mm, Instant, Digicam, Glow — a shelf of Looks, live in the
-              viewfinder.
+              The same photo pool your Look Lab grades in-app — swipe the shelf, open a family.
             </p>
           </Reveal>
           <div className="mt-8">
@@ -90,7 +89,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* How it works */}
+        {/* How it works — real App Store screens */}
         <section className="bg-[linear-gradient(180deg,transparent,rgba(230,180,80,0.05),transparent)] py-16">
           <Reveal className="mx-auto max-w-[700px] px-5 text-center">
             <span className="inline-flex rounded-full border border-[rgba(230,180,80,0.25)] bg-[rgba(230,180,80,0.14)] px-3.5 py-1.5 font-mono text-[11.5px] font-bold uppercase tracking-[0.2em] text-brass">
@@ -100,25 +99,11 @@ export default function HomePage() {
               How a night becomes a Film.
             </h2>
           </Reveal>
-          <div className="mx-auto mt-8 grid max-w-[1120px] gap-4 px-5 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              ["1", "Create a Film", "Name it, pick a Look, set when it develops."],
-              ["2", "Guests join", "Share a QR or link. Guests open Filmsera."],
-              ["3", "Shoot Shots", "Every Frame drops into the roll — unseen."],
-              ["4", "Reveal", "The timer hits zero. The album opens together."],
-            ].map(([n, t, d]) => (
-              <Reveal key={n}>
-                <div className="rounded-[22px] border border-hair bg-surface p-6 text-center">
-                  <div className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-brass font-display text-xl text-brass-deep">
-                    {n}
-                  </div>
-                  <h3 className="font-display text-[22px] text-cream">{t}</h3>
-                  <p className="mt-2 text-sm text-muted">{d}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <HowItWorks />
         </section>
+
+        {/* Recap */}
+        <RecapShowcase />
 
         {/* Feature bento */}
         <section id="reveal" className="mx-auto max-w-[1120px] px-5 py-16">
@@ -128,26 +113,48 @@ export default function HomePage() {
           <FeatureBento />
         </section>
 
-        {/* Use cases */}
-        <section className="mx-auto max-w-[1120px] px-5 py-10 text-center">
-          <Reveal>
+        {/* Use cases with photos */}
+        <section className="mx-auto max-w-[1120px] px-5 py-10">
+          <Reveal className="text-center">
             <h2 className="font-display text-3xl">Made for nights that matter.</h2>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              {[
-                ["Wedding", "/blog/shared-camera-roll-at-a-wedding.html"],
-                ["Party", "/blog/disposable-camera-party-playbook.html"],
-                ["Trip", "/blog/one-trip-one-film.html"],
-              ].map(([label, href]) => (
-                <a
-                  key={label}
-                  href={href}
-                  className="rounded-full border border-hair px-5 py-2.5 text-sm font-semibold text-cream hover:border-brass"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
           </Reveal>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {[
+              {
+                label: "Wedding",
+                href: "/blog/shared-camera-roll-at-a-wedding.html",
+                img: "/shots/samples/hug.jpg",
+              },
+              {
+                label: "Party",
+                href: "/blog/disposable-camera-party-playbook.html",
+                img: "/shots/samples/party.jpg",
+              },
+              {
+                label: "Trip",
+                href: "/blog/one-trip-one-film.html",
+                img: "/shots/samples/paris.jpg",
+              },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="group relative overflow-hidden rounded-[22px] border border-hair"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.img}
+                  alt={item.label}
+                  className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                <div className="absolute bottom-0 p-5 font-display text-2xl text-cream">
+                  {item.label}
+                </div>
+              </a>
+            ))}
+          </div>
         </section>
 
         {/* FAQ */}
@@ -161,15 +168,24 @@ export default function HomePage() {
         {/* Footer CTA */}
         <section className="mx-auto max-w-[1120px] px-5 pb-16">
           <Reveal>
-            <div className="rounded-[30px] border border-hair bg-[linear-gradient(135deg,rgba(230,180,80,0.14),rgba(230,180,80,0.04))] px-7 py-12 text-center">
-              <h2 className="font-display text-[clamp(28px,4.4vw,44px)]">Download Filmsera</h2>
-              <p className="mt-3 text-muted">
-                24 Looks. Shared Films. Timed Reveal. Host the night — then open every Frame
-                together.
-              </p>
-              <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <AppStoreBadge />
-                <DesktopQr />
+            <div className="relative overflow-hidden rounded-[30px] border border-hair">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/shots/samples/beach.jpg"
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover opacity-30"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(10,8,7,0.92),rgba(26,18,6,0.85))]" />
+              <div className="relative px-7 py-12 text-center">
+                <h2 className="font-display text-[clamp(28px,4.4vw,44px)]">Download Filmsera</h2>
+                <p className="mt-3 text-muted">
+                  24 Looks. Shared Films. Timed Reveal. Host the night — then open every Frame
+                  together.
+                </p>
+                <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                  <AppStoreBadge />
+                  <DesktopQr />
+                </div>
               </div>
             </div>
           </Reveal>
