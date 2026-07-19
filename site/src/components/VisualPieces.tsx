@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FILM_STRIP, LOOKS, HOW_STEPS } from "../lib/site";
+import { CAMERAS, FILM_STRIP, LOOKS, HOW_STEPS, type Camera } from "../lib/site";
 
 /** Shader/Mobbin-inspired film-strip of real app sample photos */
 export function FilmStrip() {
@@ -119,7 +119,7 @@ export function CameraStage() {
         <div className="mt-3 flex items-center justify-center gap-2">
           {LOOKS.map((l, idx) => (
             <button
-              key={l.slug}
+              key={l.id}
               type="button"
               aria-label={`Show ${l.name}`}
               onClick={() => {
@@ -140,49 +140,96 @@ export function CameraStage() {
   );
 }
 
-export function LookShelf({
-  looks,
-}: {
-  looks: typeof LOOKS;
-}) {
+export function LookShelf({ looks }: { looks: readonly Camera[] }) {
   return (
     <div className="flex gap-4 overflow-x-auto px-5 pb-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {looks.map((look) => (
         <a
-          key={look.slug}
-          href={`/looks/${look.slug}.html`}
-          className="group w-[240px] shrink-0 overflow-hidden rounded-[22px] border border-hair bg-surface transition hover:border-[rgba(230,180,80,0.35)]"
+          key={look.id}
+          href={`/looks/${look.id}.html`}
+          className="group w-[260px] shrink-0 overflow-hidden rounded-[22px] border border-hair bg-surface transition hover:border-[rgba(230,180,80,0.35)]"
         >
           <div className="relative aspect-[4/5] overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={look.cover}
-              alt={`${look.name} sample`}
+              alt={`${look.name} graded sample`}
               className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+            <div className="absolute left-3 top-3 flex items-center gap-2">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={look.icon}
+                alt=""
+                className="h-11 w-11 rounded-[12px] border border-white/15 bg-black/40"
+              />
+            </div>
             <div className="absolute bottom-0 p-4">
               <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brass">
-                Family
+                {look.stockCode} · No. {look.modelNumber}
               </div>
               <div className="font-display text-2xl text-cream">{look.name}</div>
             </div>
           </div>
           <div className="p-4">
             <p className="text-sm text-muted">{look.blurb}</p>
-            <div className="mt-3 flex gap-1.5">
+            <div className="mt-3 flex gap-1.5 overflow-hidden">
               {look.strip.map((src) => (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   key={src}
                   src={src}
                   alt=""
-                  className="h-12 w-12 rounded-lg object-cover ring-1 ring-white/10"
+                  className="h-[70px] w-[54px] rounded-lg object-cover ring-1 ring-white/10"
                   loading="lazy"
                 />
               ))}
             </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  );
+}
+
+/** Full camera list block for homepage — matches Cameras screen strips */
+export function CameraCatalogPreview() {
+  const preview = CAMERAS.slice(0, 8);
+  return (
+    <div className="mx-auto mt-10 grid max-w-[1120px] gap-4 px-5 md:grid-cols-2">
+      {preview.map((cam) => (
+        <a
+          key={cam.id}
+          href={`/looks/${cam.id}.html`}
+          className="rounded-[22px] border border-hair bg-surface p-4 transition hover:border-[rgba(230,180,80,0.35)]"
+        >
+          <div className="flex gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={cam.icon} alt="" className="h-14 w-14 rounded-[14px] border border-hair" />
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-baseline gap-2">
+                <span className="font-display text-xl text-cream">{cam.name}</span>
+                <span className="font-mono text-[10px] tracking-wide text-muted">{cam.stockCode}</span>
+                <span className="rounded bg-[rgba(230,180,80,0.14)] px-1.5 py-0.5 font-mono text-[10px] text-brass">
+                  No. {cam.modelNumber}
+                </span>
+              </div>
+              <p className="mt-1 line-clamp-2 text-sm text-muted">{cam.story}</p>
+            </div>
+          </div>
+          <div className="mt-3 flex gap-2 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {cam.strip.map((src) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={src}
+                src={src}
+                alt=""
+                className="h-[110px] w-[84px] shrink-0 rounded-lg object-cover"
+                loading="lazy"
+              />
+            ))}
           </div>
         </a>
       ))}

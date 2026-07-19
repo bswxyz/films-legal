@@ -1,0 +1,505 @@
+{
+  "cameras" : [
+    {
+      "blurb" : "Clean modern film. The everyday look.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "dzfilm",
+      "isPremium" : false,
+      "modelNumber" : "5677",
+      "name" : "DZ Film",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "ISO 400",
+      "story" : "The everyday stock. Balanced color, honest grain — the roll you'd keep loaded for whatever the day brings."
+    },
+    {
+      "blurb" : "Harsh flash, warm grain, 27 shots.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "disposable",
+      "isPremium" : false,
+      "modelNumber" : "1043",
+      "name" : "Disposable",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "ISO 800",
+      "story" : "A plastic one-shot from the gas-station counter. 27 frames, a harsh little flash, and no second chances."
+    },
+    {
+      "blurb" : "Wide white border. Watch it develop.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "instant",
+      "isPremium" : false,
+      "modelNumber" : "3746",
+      "name" : "Instant",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "SX-70",
+      "story" : "Press the button, pull the print, shake it into existence. The party camera that made every fridge a gallery."
+    },
+    {
+      "blurb" : "Scan lines, timecode, tracking noise.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "vhs",
+      "isPremium" : false,
+      "modelNumber" : "7696",
+      "name" : "VHS",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "SP 120MIN",
+      "story" : "Top-loading tape-deck energy. Tracking noise, timecode, and the soft hum of a Friday night recording."
+    },
+    {
+      "blurb" : "Sprockets, gate weave, heavy warm grain.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "eightmm",
+      "isPremium" : false,
+      "modelNumber" : "5566",
+      "name" : "8mm",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "SP 120MIN",
+      "story" : "Home movies from a sunlit decade. Sprockets, gate weave, and grain you can almost hear clicking through the projector."
+    },
+    {
+      "blurb" : "Early-2000s digicam. Crunchy and bright.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "digi",
+      "isPremium" : true,
+      "modelNumber" : "9702",
+      "name" : "Digicam",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "3.2 MPX",
+      "story" : "An early-2000s pocket digicam. Crunchy sharpening, brave colors, four megapixels of pure confidence."
+    },
+    {
+      "blurb" : "Signs each frame with a handwritten date.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "note",
+      "isPremium" : true,
+      "modelNumber" : "7021",
+      "name" : "Notebook",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "ISO 400",
+      "story" : "The keepsake camera. A clean, warm everyday stock that signs every frame in ink — the date scrawled in the corner like a line from a diary."
+    },
+    {
+      "blurb" : "First-gen smartphone nostalgia.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "oldiphone",
+      "isPremium" : true,
+      "modelNumber" : "5023",
+      "name" : "Pocket Cam",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "3.2 MPX",
+      "story" : "The phone camera that started the feed era. Soft, small, and accidentally nostalgic."
+    },
+    {
+      "blurb" : "Cardboard mount, saturated Velvia color.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "slide",
+      "isPremium" : true,
+      "modelNumber" : "6342",
+      "name" : "Slide",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "ISO 400",
+      "story" : "Reversal film in a cardboard mount, saturated like a projector beam in a dark living room."
+    },
+    {
+      "blurb" : "Classic 35mm with sprockets and frame numbers.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "cpm35",
+      "isPremium" : true,
+      "modelNumber" : "4761",
+      "name" : "Sprocket 35",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "ISO 400",
+      "story" : "A classic 35mm compact. Frame numbers on the rebate, an amber date in the corner, light leaks included free of charge."
+    },
+    {
+      "blurb" : "Dreamy halation bloom around the highlights.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "glow",
+      "isPremium" : true,
+      "modelNumber" : "2140",
+      "name" : "Glow",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "ISO 400",
+      "story" : "Halation like a memory. Highlights bloom, blacks lift, and everything looks like it happened years ago."
+    },
+    {
+      "blurb" : "Anaglyph 3D. Grab the red\/blue glasses.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "d3d",
+      "isPremium" : true,
+      "modelNumber" : "1060",
+      "name" : "Anaglyph",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "3.2 MPX",
+      "story" : "A red-and-blue anaglyph oddity. Find the cardboard glasses in a drawer and watch the picture pop."
+    },
+    {
+      "blurb" : "Square instant. Soft, pastel, framed.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "instasqc",
+      "isPremium" : true,
+      "modelNumber" : "3145",
+      "name" : "Pastel Square",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Originals",
+      "stockCode" : "SX-70",
+      "story" : "The square instant. Pastel chemistry, a white border, and a caption line waiting at the bottom."
+    },
+    {
+      "blurb" : "Newsreel stock. Narrow sprockets, serious grain.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "sixteenmm",
+      "isPremium" : true,
+      "modelNumber" : "6037",
+      "name" : "16mm",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 01",
+      "stockCode" : "SP 120MIN",
+      "story" : "Newsreel stock. Narrow dual sprockets, a touch of gate weave, and grain that means business."
+    },
+    {
+      "blurb" : "Camcorder scan lines and green timecode.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "dcr",
+      "isPremium" : true,
+      "modelNumber" : "9206",
+      "name" : "Camcorder",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 01",
+      "stockCode" : "SP 120MIN",
+      "story" : "A shoulder-strap camcorder with a flip-out screen. Scan lines, green timecode, birthday-party autofocus."
+    },
+    {
+      "blurb" : "Anamorphic bars. Warm, quiet contrast.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "kino",
+      "isPremium" : true,
+      "modelNumber" : "1182",
+      "name" : "Kino",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 01",
+      "stockCode" : "ISO 400",
+      "story" : "Wide-screen romance. Anamorphic bars, warm halation, and contrast that whispers instead of shouts."
+    },
+    {
+      "blurb" : "Medium format. Creamy, calm, unhurried.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "s67",
+      "isPremium" : true,
+      "modelNumber" : "4953",
+      "name" : "Heirloom",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 02",
+      "stockCode" : "ISO 400",
+      "story" : "Medium-format manners. A big, calm negative — creamy tones, gentle drama, absolutely no hurry."
+    },
+    {
+      "blurb" : "Street B&W. Deep blacks, no mercy.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "grf",
+      "isPremium" : true,
+      "modelNumber" : "2438",
+      "name" : "Noir",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 02",
+      "stockCode" : "ISO 400",
+      "story" : "A black pocket brick beloved by street shooters. Contrasty black-and-white, deep shadows, zone-focus speed."
+    },
+    {
+      "blurb" : "The drugstore standard. Golden and soft.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "original",
+      "isPremium" : true,
+      "modelNumber" : "5290",
+      "name" : "Original",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 02",
+      "stockCode" : "ISO 400",
+      "story" : "The drugstore standard. Golden warmth and soft contrast — the look every shoebox of prints shares."
+    },
+    {
+      "blurb" : "Yearbook flash. Bright, green, unflinching.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "college",
+      "isPremium" : true,
+      "modelNumber" : "4018",
+      "name" : "Yearbook",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 02",
+      "stockCode" : "ISO 800",
+      "story" : "Yearbook night. Direct flash, slightly green fluorescents, and everyone's eyes a little red."
+    },
+    {
+      "blurb" : "Eastern-bloc box. Wild leaks, zero apologies.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "noga",
+      "isPremium" : true,
+      "modelNumber" : "1930",
+      "name" : "Light Leak",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 03",
+      "stockCode" : "ISO 400",
+      "story" : "A brassy Eastern-bloc box with a mind of its own. Heavy vignette, wild leaks, zero apologies."
+    },
+    {
+      "blurb" : "Sun-bleached '70s. Yellowed and faded.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "gulf",
+      "isPremium" : true,
+      "modelNumber" : "3051",
+      "name" : "Sunbleached",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 03",
+      "stockCode" : "ISO 400",
+      "story" : "Sun-bleached like a photo left on a dashboard since 1976. Yellowed highlights, faded blacks, warm dust."
+    },
+    {
+      "blurb" : "A lens the size of a lentil.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "vfone",
+      "isPremium" : true,
+      "modelNumber" : "9687",
+      "name" : "Keychain",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 03",
+      "stockCode" : "3.2 MPX",
+      "story" : "A flip-phone lens the size of a lentil. Low saturation, mushy detail, undeniable charm."
+    },
+    {
+      "blurb" : "Plastic toy cam. Tunnel vignette, loud color.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "tam",
+      "isPremium" : true,
+      "modelNumber" : "2249",
+      "name" : "Toy Cam",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 03",
+      "stockCode" : "ISO 800",
+      "story" : "A plastic toy camera that takes itself completely seriously. Oversaturated, tunnel vignette, focus optional."
+    },
+    {
+      "blurb" : "Night-edition cine. Cool and blue-shadowed.",
+      "cover" : "s2.jpg",
+      "icon" : "icon.png",
+      "id" : "ne135",
+      "isPremium" : true,
+      "modelNumber" : "7731",
+      "name" : "Midnight",
+      "samples" : [
+        "s0.jpg",
+        "s1.jpg",
+        "s2.jpg",
+        "s3.jpg",
+        "s4.jpg",
+        "s5.jpg"
+      ],
+      "section" : "Film Pack 03",
+      "stockCode" : "ISO 400",
+      "story" : "Night-edition cine stock. Cool neutrals, gentle contrast, shadows that stay a little blue."
+    }
+  ],
+  "generatedAt" : "2026-07-19T03:02:39Z"
+}

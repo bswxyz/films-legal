@@ -6,4 +6,5 @@ __pycache__/
 site/node_modules/
 site/.next/
 site/out/
+.preview/
 # Commit root _next/ — GitHub Pages serves the Next static export homepage.

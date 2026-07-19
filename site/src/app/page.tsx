@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AppStoreBadge, DesktopQr, SiteNav } from "../components/Nav";
 import { FaqAccordion, Reveal } from "../components/ParablePieces";
 import {
+  CameraCatalogPreview,
   CameraStage,
   FeatureBento,
   FilmStrip,
@@ -82,9 +83,19 @@ export default function HomePage() {
           <p className="mt-2 text-center font-mono text-xs tracking-[0.2em] text-muted">
             ← SWIPE THE SHELF →
           </p>
-          <div className="mt-6 text-center">
+          <Reveal className="mx-auto mt-14 max-w-[700px] px-5 text-center">
+            <h3 className="font-display text-[clamp(26px,3.6vw,36px)] text-cream">
+              Same strips as Cameras in the app.
+            </h3>
+            <p className="mt-2 text-[15px] text-muted">
+              Icons, stock codes, and graded sample photos — exported from Filmsera&apos;s Look
+              Lab pipeline.
+            </p>
+          </Reveal>
+          <CameraCatalogPreview />
+          <div className="mt-8 text-center">
             <Link href="/looks/" className="font-semibold text-brass hover:underline">
-              Browse the full Look Lab →
+              Browse all 25 cameras →
             </Link>
           </div>
         </section>
